@@ -6,12 +6,6 @@ on:
     paths-ignore:
       - ".**"
 
-  pull_request:
-    branches: ["master"]
-    types: [closed]
-    paths-ignore:
-      - ".**"
-
   workflow_dispatch:
 
 permissions:
