@@ -1,13 +1,13 @@
 import { Patcher } from "../classes/Patcher.js";
 import { BasicPatch } from "../types/Patch.js";
-import { SpicePatch } from "../types/SpicePatch.js";
+import { SpiceMemoryPatch } from "../types/SpicePatch.js";
 import { data } from "../data.js";
 
 export function basicTransformer(
   gameCode: string,
   patcher: Patcher,
   patch: BasicPatch,
-): SpicePatch {
+): SpiceMemoryPatch {
   if (!patcher.version)
     throw new Error("Transformer called with invalid patcher version");
 

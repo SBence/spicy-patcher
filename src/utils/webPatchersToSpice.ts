@@ -2,6 +2,7 @@ import { Patcher } from "./classes/Patcher.js";
 import { SpicePatch } from "./types/SpicePatch.js";
 import { basicTransformer } from "./transformers/basicTransformer.js";
 import { unionTransformer } from "./transformers/unionTransformer.js";
+import { numberTransformer } from "./transformers/numberTransformer.js";
 
 export function webPatchersToSpice(
   gameCode: string,
@@ -19,11 +20,14 @@ export function webPatchersToSpice(
         if ("type" in patch) {
           switch (patch.type) {
             case "union":
-              spicePatches.push(...unionTransformer(gameCode, patcher, patch));
+              spicePatches.push(unionTransformer(gameCode, patcher, patch));
+              break;
+            case "number":
+              spicePatches.push(numberTransformer(gameCode, patcher, patch));
               break;
 
             default:
-              console.warn(`Skipping unsupported patch: ${patch.name}`);
+              console.warn(`Skipping unsupported patch`);
               break;
           }
         } else {

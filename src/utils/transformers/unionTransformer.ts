@@ -1,34 +1,31 @@
 import { Patcher } from "../classes/Patcher.js";
 import { UnionPatch } from "../types/Patch.js";
-import { SpicePatch } from "../types/SpicePatch.js";
+import { SpiceUnionPatch } from "../types/SpicePatch.js";
 import { data } from "../data.js";
 
 export function unionTransformer(
   gameCode: string,
   patcher: Patcher,
   patch: UnionPatch,
-) {
-  const spicePatches: SpicePatch[] = [];
-
+): SpiceUnionPatch {
   if (!patcher.version)
     throw new Error("Transformer called with invalid patcher version");
 
-  for (const option of patch.patches) {
-    spicePatches.push({
-      type: "memory" as const,
-      name: `${patch.name}: ${option.name}`,
-      patches: [
-        {
+  return {
+    type: "union" as const,
+    name: patch.name,
+    patches: patch.patches.map((option) => {
+      return {
+        name: option.name,
+        patch: {
           dllName: patcher.dllName,
-          dataDisabled: "",
-          dataEnabled: data(option.patch),
-          dataOffset: Number(patch.offset),
+          data: data(option.patch),
+          offset: Number(patch.offset),
         },
-      ],
-      gameCode,
-      dateCode: patcher.version,
-      description: patch.tooltip ?? "",
-    });
-  }
-  return spicePatches;
+      };
+    }),
+    gameCode,
+    dateCode: patcher.version,
+    description: patch.tooltip ?? "",
+  };
 }
