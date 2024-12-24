@@ -12,13 +12,13 @@
     "formatting:apply": "yarn prettier --write ."
   },
   "dependencies": {
-    "@mantine/core": "^7.15.1",
-    "@mantine/dropzone": "^7.15.1",
-    "@mantine/form": "^7.15.1",
-    "@mantine/hooks": "^7.15.1",
-    "@mantine/notifications": "^7.15.1",
+    "@mantine/core": "^7.15.2",
+    "@mantine/dropzone": "^7.15.2",
+    "@mantine/form": "^7.15.2",
+    "@mantine/hooks": "^7.15.2",
+    "@mantine/notifications": "^7.15.2",
     "@tabler/icons-react": "^3.26.0",
-    "jotai": "^2.10.4",
+    "jotai": "^2.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -37,7 +37,7 @@
     "postcss-simple-vars": "^7.0.1",
     "prettier": "^3.4.2",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.1",
+    "typescript-eslint": "^8.18.2",
     "vite": "^6.0.5",
     "vite-tsconfig-paths": "^5.1.4"
   }
