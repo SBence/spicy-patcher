@@ -12,11 +12,11 @@
     "formatting:apply": "yarn prettier --write ."
   },
   "dependencies": {
-    "@mantine/core": "^7.15.2",
-    "@mantine/dropzone": "^7.15.2",
-    "@mantine/form": "^7.15.2",
-    "@mantine/hooks": "^7.15.2",
-    "@mantine/notifications": "^7.15.2",
+    "@mantine/core": "^7.15.3",
+    "@mantine/dropzone": "^7.15.3",
+    "@mantine/form": "^7.15.3",
+    "@mantine/hooks": "^7.15.3",
+    "@mantine/notifications": "^7.15.3",
     "@tabler/icons-react": "^3.27.1",
     "jotai": "^2.11.0",
     "react": "^18.2.0",
