@@ -1,7 +1,7 @@
 import { Patcher } from "../classes/Patcher.js";
+import { data } from "../data.js";
 import { BasicPatch } from "../types/Patch.js";
 import { SpiceMemoryPatch } from "../types/SpicePatch.js";
-import { data } from "../data.js";
 
 export function basicTransformer(
   gameCode: string,
@@ -13,14 +13,12 @@ export function basicTransformer(
 
   return {
     name: patch.name,
-    patches: patch.patches.map((p) => {
-      return {
-        dllName: patcher.dllName,
-        dataDisabled: data(p.off),
-        dataEnabled: data(p.on),
-        dataOffset: Number(p.offset),
-      };
-    }),
+    patches: patch.patches.map((p) => ({
+      dllName: patcher.dllName,
+      dataDisabled: data(p.off),
+      dataEnabled: data(p.on),
+      dataOffset: Number(p.offset),
+    })),
     gameCode,
     dateCode: patcher.version,
     description: patch.tooltip ?? "",
