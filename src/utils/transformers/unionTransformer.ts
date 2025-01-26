@@ -1,7 +1,7 @@
 import { Patcher } from "../classes/Patcher.js";
+import { data } from "../data.js";
 import { UnionPatch } from "../types/Patch.js";
 import { SpiceUnionPatch } from "../types/SpicePatch.js";
-import { data } from "../data.js";
 
 export function unionTransformer(
   gameCode: string,
@@ -14,16 +14,14 @@ export function unionTransformer(
   return {
     type: "union" as const,
     name: patch.name,
-    patches: patch.patches.map((option) => {
-      return {
-        name: option.name,
-        patch: {
-          dllName: patcher.dllName,
-          data: data(option.patch),
-          offset: Number(patch.offset),
-        },
-      };
-    }),
+    patches: patch.patches.map((option) => ({
+      name: option.name,
+      patch: {
+        dllName: patcher.dllName,
+        data: data(option.patch),
+        offset: Number(patch.offset),
+      },
+    })),
     gameCode,
     dateCode: patcher.version,
     description: patch.tooltip ?? "",
